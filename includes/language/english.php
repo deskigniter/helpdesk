@@ -6,11 +6,11 @@
  * @author Evolution Script S.A.C.
  * @since 1.0.0
  */
-$LANG['HOME'] = 'Home';
-$LANG['MY_TICKETS'] = 'My Tickets';
-$LANG['SUBMIT_A_TICKET'] = 'Submit a Ticket';
-$LANG['KNOWLEDGEBASE'] = 'Knowledgebase';
-$LANG['NEWS'] = 'News';
+
+
+
+
+
 $LANG['ACCOUNT_LOGIN'] = 'Account Login';
 $LANG['LASTEST_UPDATES'] = 'Lastest Updates';
 $LANG['YOUR_EMAIL_ADDRESS'] = 'Your email address';

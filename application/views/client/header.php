@@ -31,15 +31,38 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item <?php if($this->uri->segment(1) == ''){ echo 'active';}?>">
+                    <a class="nav-link" href="#"><i class="fa fa-home"></i> <?php echo lang('home');?> <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+                <?php
+                if($this->client->isOnline()){
+                    ?>
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'tickets' && $this->uri->segment(2) == 'manage'){ echo 'active'; }?>">
+                        <a class="nav-link" href="<?php echo site_url('tickets/manage');?>"><?php echo lang('tickets');?></a>
+                    </li>
+                <?php
+                }else{
+                    ?>
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'tickets' && $this->uri->segment(2) == 'new'){ echo 'active'; }?>">
+                        <a class="nav-link" href="<?php echo site_url('tickets/new');?>"><?php echo lang('submit_ticket');?></a>
+                    </li>
+                <?php
+                }
+                if($this->settings->get('knowledgebase') == 'yes'){
+                    ?>
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'kb'){ echo 'active'; }?>">
+                        <a class="nav-link" href="<?php echo site_url('kb');?>"><?php echo lang('knowledgebase');?></a>
+                    </li>
+                <?php
+                }
+                if($this->settings->get('news') == 'yes'){
+                    ?>
+                    <li class="nav-item <?php if($this->uri->segment(1) == 'news'){ echo 'active'; }?>">
+                        <a class="nav-link" href="<?php echo site_url('news');?>"><?php echo lang('new');?></a>
+                    </li>
+                    <?php
+                }
+                ?>
             </ul>
         </div>
     </div>
@@ -50,31 +73,6 @@
         <div id="logo">
             <a href="{{ settings.site_url }}"></a>
         </div>
-    </div>
-    <div id="navbar">
-        <ul>
-            <li><a href="{{ settings.site_url }}" {% if controller == 'home' or controller == 'login' %}class="current"{% endif %}>{{ LANG.HOME }}</a></li>
-            {% if client_status == 1 %}
-            <li><a href="{{ getUrl('view_tickets') }}" {% if controller == 'view_tickets' %}class="current"{% endif %}>{{ LANG.MY_TICKETS }}</a></li>
-            {% endif %}
-            <li><a href="{{ getUrl('submit_ticket') }}" {% if controller == 'submit_ticket' %}class="current"{% endif %}>{{ LANG.SUBMIT_A_TICKET }}</a></li>
-            {% if settings.knowledgebase == 'yes' %}
-            <li><a href="{{ getUrl('knowledgebase') }}" {% if controller == 'knowledgebase' %}class="current"{% endif %}>{{ LANG.KNOWLEDGEBASE }}</a></li>
-            {% endif %}
-            {% if settings.news == 'yes' %}
-            <li><a href="{{ getUrl('news') }}" {% if controller == 'news' %}class="current"{% endif %}>{{ LANG.NEWS }}</a></li>
-            {% endif %}
-        </ul>
-        <div id="language">
-        	{% if settings.client_multilanguage %}
-             <select name="language" onchange="location.href='{{settings.site_url}}/?lang='+this.value" class="language_selector">
-            	{% for lang in client_languages %}
-                <option value="{{ lang }}" {% if default_language == lang %}selected{% endif %}>{{ lang|capitalize }}</option>
-                {% endfor %}
-            </select>
-            {% endif %}
-        </div>
-        <div class="clear"></div>
     </div>
 
     <div id="content">

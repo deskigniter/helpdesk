@@ -1,7 +1,6 @@
 <?php
-/**
- * @package DeskIgniter
- * @author: PeruCoder Dev Team
- * @Copyright (c) 2017, PeruCoder Dev Team - All rights reserved
- * @link http://deskigniter.com
- */
+$lang['home'] = 'Home';
+$lang['tickets'] = 'Tickets';
+$lang['submit_ticket'] = 'Submit a Ticket';
+$lang['knowledgebase'] = 'Knowledgebase';
+$lang['news'] = 'News';
