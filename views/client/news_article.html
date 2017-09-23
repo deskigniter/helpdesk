@@ -1,0 +1,39 @@
+{% extends "site.html" %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block content %}
+
+<div class="title">{{ LANG.NEWS }}</div>
+            	<table>
+			<tr>
+				<td rowspan="2">
+					<div class="calendar">
+						<div class="day">{{ news.date|date("d") }}</div>           
+						<div class="month">{{ news.date|date("M") }}</div>
+					</div>
+				</td>
+				<td valign="bottom">
+					<div class="newstitle"><a href="{{ news.url }}">{{ news.title }}</a></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+<div class="newsdescription">{{ LANG.POSTED_BY_ON|replace({'%author%':news.author, '%date%':displayDate(news.date)}) }}</div>
+				</td>
+			</tr>
+			</table>
+
+            <div class="newscontent">{{ news.content|raw }}</div>
+{% if settings.socialbuttonnews == 1 %}
+<!-- AddThis Button BEGIN -->
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_pinterest_pinit"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50b4e8ad128a95ae"></script>
+<!-- AddThis Button END -->
+<!-- AddThis Button END -->
+{% endif %}
+{% endblock %}

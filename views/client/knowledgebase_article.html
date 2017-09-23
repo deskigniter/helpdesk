@@ -1,0 +1,34 @@
+{% extends 'site.html' %}
+{% block title %}{{ LANG.KNOWLEDGEBASE }} > {{ article.title }}{% endblock %}
+{% block content %}
+{% include 'knowledgebase_searchbox.html' %}
+<div class="title">
+	{{ LANG.KNOWLEDGEBASE }} {% if cat_id != 0 %}: {{ cat_title|raw }}{% endif %}
+</div>
+<div class="knowledgebasearticletitle">{{ article.title }}</div>
+<div class="knowledgebasearticletitledescr">{{ LANG.POSTED_BY_ON|replace({'%author%':article.author, '%date%':displayDate(article.date)}) }}</div>
+<div>{{ article.content|raw }}</div>
+
+{% if attachments|is_array %}
+<div class="knowledgebasearticleattachment">{{ LANG.ATTACHMENTS }}</div>
+    {% for attachment in attachments %}
+    <div><span class="knowledgebaseattachmenticon"></span> <a href="{{ attachment_url }}{{ attachment.id }}" target="_blank">{{ attachment.name }} ({{ attachment.filesize }})</a></div>
+        
+    {% endfor %}
+{% endif %}
+
+{% if settings.socialbuttonkb == 1 %}
+<!-- AddThis Button BEGIN -->
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_pinterest_pinit"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50b4e8ad128a95ae"></script>
+<!-- AddThis Button END -->
+<!-- AddThis Button END -->
+{% endif %}
+
+{% endblock %}
