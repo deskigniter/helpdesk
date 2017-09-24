@@ -8,10 +8,6 @@
  */
 
 
-
-
-
-$LANG['ACCOUNT_LOGIN'] = 'Account Login';
 $LANG['LASTEST_UPDATES'] = 'Lastest Updates';
 $LANG['YOUR_EMAIL_ADDRESS'] = 'Your email address';
 $LANG['YOUR_PASSWORD'] = 'Your password';

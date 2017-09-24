@@ -37,6 +37,29 @@ function html_script($data){
     return '<script src="'.$url.'"></script>';
 }
 
+function setOutput($name=null)
+{
+    if(is_null($name)){
+        ob_start();
+    }else{
+        $content = ob_get_clean();
+        getOutput($name, $content);
+    }
+}
+
+function getOutput($name='', $content=null){
+    static $vars = array();
+    if(!is_null($content)){
+        $vars[$name] = $content;
+    }else{
+        if(isset($vars[$name]))
+        {
+            return $vars[$name];
+        }
+        return null;
+    }
+}
+
 function html_input($vars=array())
 {
     //Label
