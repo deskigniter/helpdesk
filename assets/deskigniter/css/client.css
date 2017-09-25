@@ -40,57 +40,20 @@ body, .form-control{
 }
 
 /* Navbar */
-
-.navbar {
-    background-color: #2680be;
+.navbar{
+    font-weight: 400;
+    -webkit-box-shadow: -1px 2px 9px 0px rgba(221,221,221,1);
+    -moz-box-shadow: -1px 2px 9px 0px rgba(221,221,221,1);
+    box-shadow: -1px 2px 9px 0px rgba(221,221,221,1);
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-.navbar .navbar-brand {
-    color: #ffffff;
+.navbar-light .navbar-nav .nav-link {
+    color: #03363D;
 }
-.navbar .navbar-brand:hover,
-.navbar .navbar-brand:focus {
-    color: #ffffff;
-}
-.navbar .navbar-text {
-    color: #ffffff;
-}
-.navbar .navbar-nav .nav-link {
-    color: #ffffff;
-    border-radius: .25rem;
-    margin: 0 0.25em;
-}
-.navbar .navbar-nav .nav-link:not(.disabled):hover,
-.navbar .navbar-nav .nav-link:not(.disabled):focus {
-    color: #ffffff;
-}
-.navbar .navbar-nav .nav-item.active .nav-link,
-.navbar .navbar-nav .nav-item.active .nav-link:hover,
-.navbar .navbar-nav .nav-item.active .nav-link:focus,
-.navbar .navbar-nav .nav-item.show .nav-link,
-.navbar .navbar-nav .nav-item.show .nav-link:hover,
-.navbar .navbar-nav .nav-item.show .nav-link:focus {
-    color: #ffffff;
-    background-color: #005380;
-}
-.navbar .navbar-toggle {
-    border-color: #005380;
-}
-.navbar .navbar-toggle:hover,
-.navbar .navbar-toggle:focus {
-    background-color: #005380;
-}
-.navbar .navbar-toggle .navbar-toggler-icon {
-    color: #ffffff;
-}
-.navbar .navbar-collapse,
-.navbar .navbar-form {
-    border-color: #ffffff;
-}
-.navbar .navbar-link {
-    color: #ffffff;
-}
-.navbar .navbar-link:hover {
-    color: #ffffff;
+.navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #2276D2;
+    text-decoration: underline;
 }
 
 .navbar-dark .navbar-toggler-icon {
@@ -121,18 +84,16 @@ body, .form-control{
 
 .slider-block{
     background: url("../images/slider.jpg") no-repeat;
-    background-position: center;
+    background-position: top;
     background-size: cover;
-    color: white;
+    color: #1b1e21;
 }
 .slider-block .slider-content{
     text-align: center;
     padding-top: 120px;
     padding-bottom: 120px;
-    background-color: rgba(0, 0, 0, 0.3);
 }
 .slider-block .slider-content h1{
-    font-weight: 200;
+    font-weight: 300;
     margin-bottom: 50px;
-    text-shadow: 4px 2px  2px #000000;
 }
