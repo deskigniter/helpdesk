@@ -12,7 +12,6 @@ class Pages extends MY_Controller
     public function home()
 	{
         $this->load->model('content');
-        return $this->load->view('client/pages', ['content' => $this->content->load('home')]);
         if($this->settings->get('homepage') == 'knowledgebase' && $this->settings->get('knowledgebase') == 'yes'){
             return $this->kb();
         }elseif($this->settings->get('homepage') == 'news' && $this->settings->get('news') == 'yes'){
@@ -25,7 +24,12 @@ class Pages extends MY_Controller
 	}
 
 	public function kb(){
+        $this->load->model('kb');
+        if($this->settings->get('knowledgebase') != 'yes'){
+            redirect();
+        }
 
+        $this->load->view('client/kb');
     }
 
     public function news(){

@@ -66,6 +66,7 @@ die('This file is used for development purposes only.');
  * @property Client $client
  * @property Staff $staff
  * @property Content $content
+ * @property Kb $kb
  */
 class CI_Controller {
     public function __construct()

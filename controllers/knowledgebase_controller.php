@@ -9,10 +9,7 @@
 if($controller == 'knowledgebase'){
 include(INCLUDES.'helpdesk.inc.php');
 }
-if($settings['knowledgebase'] != 'yes'){
-	header('location: '.getUrl());
-	exit;	
-}
+
 $qch = $db->query("SELECT id, parent, public FROM ".TABLE_PREFIX."knowledgebase_category ORDER BY public ASC, parent ASC");
 $hiddencategorylist = array();
 while($r = $db->fetch_array($qch)){
@@ -105,6 +102,7 @@ if($params[0] == 'article' && is_numeric($params[1])){
 		exit;
 	}
 }
+
 $template_vars = array();
 $template_vars['cat_id'] = $cat_id;
 $template_vars['cat_title'] = $cat_title;

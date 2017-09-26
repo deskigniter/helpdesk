@@ -1,10 +1,22 @@
-{% extends 'site.html' %}
-{% block title %}{% if controller== 'home' %}{{ parent() }}{% else %}{{ LANG.KNOWLEDGEBASE }}{% endif %}{% endblock %}
-{% block content %}
-{% if error_msg != '' %}{{ error_message(error_msg) }}<br />{% endif %}
-{% include 'knowledgebase_searchbox.html' %}
-<div class="title">
-    {{ LANG.KNOWLEDGEBASE }} {% if cat_id != 0 %}: {{ cat_title|raw }}{% endif %}
+<?php
+/**
+ * @var $this CI_Model
+ */
+$site_title = lang('knowledgebase');
+include 'kb_search_box.php';
+include 'header.php';
+?>
+<h2 class="title_light"><?php echo isset($cat_title) ? $cat_title : lang('knowledgebase');?></h2>
+<hr>
+
+
+<div class="row">
+    <?php
+    $columns = 12/$this->settings->get('knowledgebase_columns');
+    ?>
+    <div class="col-md-<?php echo $columns;?>">
+
+    </div>
 </div>
 
         	<table width="100%" cellpadding="5" cellspacing="5">
@@ -60,4 +72,5 @@
 				{% endif %}
                 </tr>
             </table>
-{% endblock %}
+<?php
+include 'footer.php';

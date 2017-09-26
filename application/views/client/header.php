@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?php echo isset($site_title) ? $site_title : $this->settings->get('windows_title');?></title>
+    <title><?php echo (isset($site_title) ? $site_title.' - ' : '').$this->settings->get('windows_title');?></title>
     <?php
     echo html_css([
         'assets/bootstrap/css/bootstrap.min.css',
