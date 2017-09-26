@@ -122,6 +122,8 @@ class CI_Controller {
  * @property Settings $settings
  * @property Client $client
  * @property Staff $staff
+ * @property Content $content
+ * @property Kb $kb
  */
 class CI_Model {
     public function __construct()

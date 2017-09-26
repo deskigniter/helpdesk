@@ -16,6 +16,12 @@ class Kb extends CI_Model
         $q = $this->db->where('parent', $parent)
             ->order_by('position','asc')
             ->get('knowledgebase_category');
+        if($q->num_rows() == 0){
+            return null;
+        }
+        $r = $q->result();
+        $q->free_result();
+        return $r;
 
         while($r = $db->fetch_array($q)){
             $r['total_articles'] = $db->fetchOne("SELECT COUNT(id) AS total FROM ".TABLE_PREFIX."articles WHERE category=".$r['id']." AND public=1");

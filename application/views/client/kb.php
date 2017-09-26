@@ -9,15 +9,19 @@ include 'header.php';
 <h2 class="title_light"><?php echo isset($cat_title) ? $cat_title : lang('knowledgebase');?></h2>
 <hr>
 
-
-<div class="row">
-    <?php
-    $columns = 12/$this->settings->get('knowledgebase_columns');
-    ?>
-    <div class="col-md-<?php echo $columns;?>">
-
+<?php if($cats = $this->kb->getCategories($cat_id)):?>
+    <div class="row">
+        <?php
+        $columns = 12/$this->settings->get('knowledgebase_columns');
+        foreach ($cats as $cat):
+        ?>
+        <div class="col-md-<?php echo $columns;?>">
+            <h3 class="title_light"><a href="<?php echo site_url('kb/cat/'.$cat->id.'/'.url_title($cat->name));?>"><?php echo $cat->name;?></a></h3>
+        </div>
+        <?php endforeach;?>
     </div>
-</div>
+    <?php endif;?>
+
 
         	<table width="100%" cellpadding="5" cellspacing="5">
             {% set columnspercent = (100/settings.knowledgebase_columns)|round(2) %}

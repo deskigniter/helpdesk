@@ -28,8 +28,7 @@ class Pages extends MY_Controller
         if($this->settings->get('knowledgebase') != 'yes'){
             redirect();
         }
-
-        $this->load->view('client/kb');
+        $this->load->view('client/kb', ['cat_id' => 0]);
     }
 
     public function news(){
