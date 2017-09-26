@@ -129,24 +129,7 @@ while($r = $db->fetch_array($qart)){
 }
 $template_vars['articles'] = $articles;
 
-//Popular Articles
-if($settings['knowledgebase_mostpopular'] == 'yes'){
-	$q = $db->query("SELECT id, title, category FROM ".TABLE_PREFIX."articles WHERE public=1 {$hiddencategorylistq} ORDER BY views DESC LIMIT {$settings['knowledgebase_mostpopulartotal']}");
-	while($r = $db->fetch_array($q)){
-		$r['url'] = getUrl('knowledgebase',$r['category'],array('article', $r['id'], strtourl($r['title'])));
-		$kb_popular[] = $r;	
-	}
-	$template_vars['kb_popular'] = $kb_popular;
-}
-//Newest Articles
-if($settings['knowledgebase_newest'] == 'yes'){
-	$q = $db->query("SELECT id, title, category FROM ".TABLE_PREFIX."articles WHERE public=1 {$hiddencategorylistq} ORDER BY date DESC LIMIT {$settings['knowledgebase_newesttotal']}");
-	while($r = $db->fetch_array($q)){
-		$r['url'] = getUrl('knowledgebase',$r['category'],array('article', $r['id'], strtourl($r['title'])));
-		$kb_newest[] = $r;	
-	}
-	$template_vars['kb_newest'] = $kb_newest;
-}
+
 $template_vars['error_msg'] = $error_msg;
 $template = $twig->loadTemplate('knowledgebase.html');
 echo $template->render($template_vars);

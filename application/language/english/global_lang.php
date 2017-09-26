@@ -19,3 +19,6 @@ $lang['sign_up_message'] = 'Once you sign up, you will have complete access to o
 /* Kb */
 $lang['how_can_we_help'] = 'How can we help you?';
 $lang['i_need_help_with'] = 'I need help with...';
+$lang['most_popular_articles'] = 'Most popular articles';
+$lang['newest_articles'] = 'Newest articles';
+$lang['no_articles'] = 'There are not articles yet.';
