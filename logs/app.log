@@ -1,3 +1,0 @@
-[2017-09-07 05:52:02] app_log.CRITICAL: Function name must be a string {"File":"/Library/WebServer/Documents/helpdeskz/index.php","Line":105} []
-[2017-09-07 05:52:24] app_log.NOTICE: Undefined variable: hola {"File":"/Library/WebServer/Documents/helpdeskz/index.php","Line":105} []
-[2017-09-07 05:52:24] app_log.CRITICAL: Function name must be a string {"File":"/Library/WebServer/Documents/helpdeskz/index.php","Line":105} []
