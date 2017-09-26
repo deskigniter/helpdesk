@@ -1,11 +1,4 @@
 <?php
-/**
- * @package HelpDeskZ
- * @website: http://www.helpdeskz.com
- * @community: http://community.helpdeskz.com
- * @author Evolution Script S.A.C.
- * @since 1.0.0
- */
 error_reporting(E_ALL & ~E_NOTICE);	
 session_start();
 // Create a 300x100 image
