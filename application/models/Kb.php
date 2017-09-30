@@ -66,7 +66,7 @@ class Kb extends CI_Model
      * Private Categories
      * -------------------
      */
-    protected function privateCategories()
+    public function privateCategories()
     {
         if(!$this->private_cats)
         {
@@ -279,5 +279,43 @@ class Kb extends CI_Model
         $r = $q->result();
         $q->free_result();
         return $r;
+    }
+
+    /*
+     *
+     * ---------------
+     * Retrieve an Article
+     * -------------------
+     */
+
+    public function getArticle($id, $private=false)
+    {
+        if(!$private)
+        {
+            $this->db->where('a.public', 1)
+                ->where('c.public', 1);
+        }
+        $q = $this->db->select('a.*, c.id as cat_id, c.name as cat_name')
+            ->where('a.id', $id)
+            ->from('articles as a')
+            ->join('knowledgebase_category as c', 'c.id=a.category')
+            ->get();
+        if($q->num_rows() == 0)
+        {
+            return null;
+        }
+        $result = $q->row();
+        $q->free_result();
+        if(!$private){
+            if(in_array($result->category, $this->privateCategories())){
+                return null;
+            }
+        }
+
+
+        $this->db->set('views','views+1', false)
+            ->where('id', $id)
+            ->update('articles');
+        return $result;
     }
 }

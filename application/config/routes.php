@@ -52,6 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages/home';
 $route['kb/cat/(:num)'] = 'pages/kb/$1';
 $route['kb/cat/(:num)/(:any)'] = 'pages/kb/$1';
+$route['kb/article/(:num)'] = 'pages/kbArticle/$1';
+$route['kb/article/(:num)/(:any)'] = 'pages/kbArticle/$1';
 $route['kb'] = 'pages/kb';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -45,6 +45,14 @@ class Pages extends MY_Controller
         ]);
     }
 
+    public function kbArticle($article_id){
+	    $this->load->model('kb');
+	    if(!$article = $this->kb->getArticle($article_id)){
+	        redirect('kb');
+        }
+        $this->load->view('client/kb_article', ['article' => $article]);
+    }
+
     public function news(){
         $q = $db->query("SELECT * FROM ".TABLE_PREFIX."news WHERE public=1 ORDER BY date DESC LIMIT 5");
         while($r = $db->fetch_array($q)){

@@ -1,4 +1,21 @@
-{% extends 'site.html' %}
+<?php
+/**
+ * @var $this CI_Model
+ */
+include 'header.php';
+?>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<?php echo site_url('kb');?>"><?php echo lang('knowledgebase');?></a></li>
+        <?php
+        if($parents = $this->kb->categoryParents($article->cat_id)){
+            foreach ($parents as $id => $name){
+                echo '<li class="breadcrumb-item"><a href="'.site_url('kb/cat/'.$id.'/'.url_title($name)).'">'.$name.'</a></li>';
+            }
+        }
+        ?>
+        <li class="breadcrumb-item active"><?php echo $cat_name;?></li>
+    </ol>
+
 {% block title %}{{ LANG.KNOWLEDGEBASE }} > {{ article.title }}{% endblock %}
 {% block content %}
 {% include 'knowledgebase_searchbox.html' %}
@@ -16,19 +33,5 @@
         
     {% endfor %}
 {% endif %}
-
-{% if settings.socialbuttonkb == 1 %}
-<!-- AddThis Button BEGIN -->
-<!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style ">
-    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    <a class="addthis_button_tweet"></a>
-    <a class="addthis_button_pinterest_pinit"></a>
-    <a class="addthis_counter addthis_pill_style"></a>
-</div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-50b4e8ad128a95ae"></script>
-<!-- AddThis Button END -->
-<!-- AddThis Button END -->
-{% endif %}
-
-{% endblock %}
+<?php
+include 'footer.php';
